@@ -7,7 +7,7 @@ Warlock::Warlock(const Warlock & src){*this = src;}
 Warlock::Warlock(std::string const & N, std::string const & T){
 	this->_name = N;
 	this->_title = T;
-	std::cout << this->_name << ": This looks like another boring day.\n";//putain de '.' de merde
+	std::cout << this->_name << ": This looks like another boring day.\n";
 }
 
 Warlock::~Warlock(){
