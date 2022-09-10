@@ -9,7 +9,7 @@ public:
 	Polymorph();
 	virtual ~Polymorph();
 
-	virtual Polymorph* clone();
+	virtual Polymorph* clone() const;
 };
 
 

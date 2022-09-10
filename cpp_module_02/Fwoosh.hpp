@@ -9,7 +9,7 @@ public:
 	Fwoosh();
 	virtual ~Fwoosh();
 
-	virtual Fwoosh* clone();
+	virtual Fwoosh* clone() const;
 };
 
 

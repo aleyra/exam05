@@ -2,8 +2,7 @@
 # define WARLOCK_H
 
 # include "iostream"
-# include "Fwoosh.hpp"
-# include "Dummy.hpp"
+# include "SpellBook.hpp"
 # include <map>
 
 class ASpell;
@@ -12,9 +11,9 @@ class ATarget;
 class Warlock{
 
 private :
-	std::string 					_name;
-	std::string						_title;
-	std::map<std::string, ASpell*>	_spell_map;
+	std::string name;
+	std::string	title;
+	SpellBook*	spellbook;
 
 private:
 	Warlock();

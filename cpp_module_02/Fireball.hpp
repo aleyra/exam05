@@ -9,7 +9,7 @@ public:
 	Fireball();
 	virtual ~Fireball();
 
-	virtual Fireball* clone();
+	virtual Fireball* clone() const;
 };
 
 
