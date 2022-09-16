@@ -9,7 +9,7 @@ public:
 	BrickWall();
 	virtual ~BrickWall();
 
-	virtual BrickWall* clone() const;//du coup const ici aussi
+	virtual BrickWall* clone() const;
 };
 
 

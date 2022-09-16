@@ -9,7 +9,7 @@ public:
 	Dummy();
 	virtual ~Dummy();
 
-	virtual Dummy* clone() const;//du coup const ici aussi
+	virtual Dummy* clone() const;
 };
 
 
