@@ -59,7 +59,9 @@ void	Warlock::forgetSpell(std::string sn){
 }
 
 void	Warlock::launchSpell(std::string sn, ATarget const & t){
-	if (!sn.empty() && this->spellbook->spell_map.find(sn) != this->spellbook->spell_map.end()){
+	if (sn.empty())//une condition de if a la fois pour eviter des erreurs bete
+		return ;
+	if (this->spellbook->spell_map.find(sn) != this->spellbook->spell_map.end()){//attention ici c'est != 
 		ASpell*	ns = this->spellbook->createSpell(sn);
 		ns->launch(t);
 		if (ns != NULL)

@@ -3,6 +3,7 @@
 
 # include "iostream"
 # include "Dummy.hpp"
+# include "BrickWall.hpp"
 # include <map>
 
 class TargetGenerator{

@@ -1,4 +1,5 @@
 #include "Warlock.hpp"
+#include "TargetGenerator.hpp"
 
 int main()
 {

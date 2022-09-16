@@ -25,8 +25,12 @@ SpellBook &	SpellBook::operator=(SpellBook const & src){
 }
 
 void SpellBook::learnSpell(ASpell* as){
-	if (as != NULL && this->spell_map.find(as->getName()) != this->spell_map.end())
+	if (as == NULL)//une condition de if a la fois pour eviter des erreurs bete
+		return ;
+	if (this->spell_map.find(as->getName()) == this->spell_map.end()){//attention, ici c'est ==
 		this->spell_map[as->getName()] = as->clone();
+	}
+
 }
 
 void SpellBook::forgetSpell(std::string const & sn){
