@@ -6,7 +6,7 @@
 	<li>verifier que les params sont non NULL ou non vide</li>
 	<li>faire les tests un a un si possible pour eviter les erreurs betes</li>
 </ul>
-<ul>
+<ul>cpp_module_02
 	<li>learnSpell : attention, find == end pour clone</li>
 	<li>faire les tests un a un si possible pour eviter les erreurs betes</li>
 	<li>launchSpell : attention find != end pour create puis launch</li>
