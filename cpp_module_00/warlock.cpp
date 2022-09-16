@@ -5,35 +5,35 @@ Warlock::Warlock(){}
 Warlock::Warlock(const Warlock & src){*this = src;}
 
 Warlock::Warlock(std::string const & N, std::string const & T){
-	this->_name = N;
-	this->_title = T;
-	std::cout << this->_name << ": This looks like another boring day.\n";//putain de '.' de merde
+	name = N;
+	title = T;
+	std::cout << name << ": This looks like another boring day.\n";//putain de '.' de merde
 }
 
 Warlock::~Warlock(){
-	std::cout << this->_name << ": My job here is done!\n";
+	std::cout << name << ": My job here is done!\n";
 }
 
 Warlock &	Warlock::operator=(Warlock const & src){
-	this->_name = src._name;
-	this->_title = src._title;
+	name = src.name;
+	title = src.title;
 	return (*this);
 }
 
 std::string const & Warlock::getName() const{
-	return (this->_name);
+	return (name);
 }
 
 std::string const &Warlock::getTitle() const {
-	return (this->_title);
+	return (title);
 }
 
 void	Warlock::setTitle(std::string const & T){
-	this->_title = T;
+	title = T;
 }
 
 void Warlock::introduce() const{
-	std::cout << this->_name << ": I am " << this->_name << ", " << this->_title << "!\n";
+	std::cout << name << ": I am " << name << ", " << title << "!\n";
 }
 
 

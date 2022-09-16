@@ -12,9 +12,9 @@ class ATarget;
 class Warlock{
 
 private :
-	std::string 					_name;
-	std::string						_title;
-	std::map<std::string, ASpell*>	_spell_map;
+	std::string 					name;
+	std::string						title;
+	std::map<std::string, ASpell*>	spell_map;
 
 private:
 	Warlock();

@@ -3,10 +3,10 @@
 SpellBook::SpellBook(){}
 
 SpellBook::~SpellBook(){
-	for (std::map<std::string, ASpell*>::iterator it = this->spell_map.begin(); it != this->spell_map.end(); ++it){
+	for (std::map<std::string, ASpell*>::iterator it = spell_map.begin(); it != spell_map.end(); ++it){
 		delete it->second;
 	}
-	this->spell_map.clear();
+	spell_map.clear();
 }
 
 SpellBook::SpellBook(SpellBook const & src){
@@ -14,12 +14,12 @@ SpellBook::SpellBook(SpellBook const & src){
 }
 
 SpellBook &	SpellBook::operator=(SpellBook const & src){
-	for (std::map<std::string, ASpell*>::iterator it = this->spell_map.begin(); it != this->spell_map.end(); ++it){
+	for (std::map<std::string, ASpell*>::iterator it = spell_map.begin(); it != spell_map.end(); ++it){
 		delete it->second;
 	}
-	this->spell_map.clear();
+	spell_map.clear();
 	for (std::map<std::string, ASpell*>::const_iterator it = src.spell_map.begin(); it != src.spell_map.end(); ++it){
-		this->spell_map[it->first] = it->second->clone();
+		spell_map[it->first] = it->second->clone();
 	}
 	return (*this);
 }
@@ -27,22 +27,22 @@ SpellBook &	SpellBook::operator=(SpellBook const & src){
 void SpellBook::learnSpell(ASpell* as){
 	if (as == NULL)//une condition de if a la fois pour eviter des erreurs bete
 		return ;
-	if (this->spell_map.find(as->getName()) == this->spell_map.end()){//attention, ici c'est ==
-		this->spell_map[as->getName()] = as->clone();
+	if (spell_map.find(as->getName()) == spell_map.end()){//attention, ici c'est ==
+		spell_map[as->getName()] = as->clone();
 	}
 
 }
 
 void SpellBook::forgetSpell(std::string const & sn){
-	if (!sn.empty() && this->spell_map.find(sn) != this->spell_map.end()){
-		delete this->spell_map[sn];
-		this->spell_map.erase(sn);
+	if (!sn.empty() && spell_map.find(sn) != spell_map.end()){
+		delete spell_map[sn];
+		spell_map.erase(sn);
 	}
 }
 
 ASpell* SpellBook::createSpell(std::string const & sn){
-	if (!sn.empty() && this->spell_map.find(sn) != this->spell_map.end()){
-		return (this->spell_map[sn]->clone());
+	if (!sn.empty() && spell_map.find(sn) != spell_map.end()){
+		return (spell_map[sn]->clone());
 	}
 	return NULL;
 }

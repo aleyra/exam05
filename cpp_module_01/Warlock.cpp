@@ -5,60 +5,64 @@ Warlock::Warlock(){}
 Warlock::Warlock(const Warlock & src){*this = src;}
 
 Warlock::Warlock(std::string const & N, std::string const & T){
-	this->_name = N;
-	this->_title = T;
-	std::cout << this->_name << ": This looks like another boring day.\n";
+	name = N;
+	title = T;
+	std::cout << name << ": This looks like another boring day.\n";
 }
 
 Warlock::~Warlock(){
-	for (std::map<std::string, ASpell*>::iterator it = this->_spell_map.begin(); it != this->_spell_map.end(); ++it)
+	for (std::map<std::string, ASpell*>::iterator it = spell_map.begin(); it != spell_map.end(); ++it)
 		delete (it->second);
-	this->_spell_map.clear();
-	std::cout << this->_name << ": My job here is done!\n";
+	spell_map.clear();
+	std::cout << name << ": My job here is done!\n";
 }
 
 Warlock &	Warlock::operator=(Warlock const & src){
-	this->_name = src._name;
-	this->_title = src._title;
-	for (std::map<std::string, ASpell*>::iterator it = this->_spell_map.begin(); it != this->_spell_map.end(); ++it)
+	name = src.name;
+	title = src.title;
+	for (std::map<std::string, ASpell*>::iterator it = spell_map.begin(); it != spell_map.end(); ++it)
 		delete (it->second);
-	this->_spell_map.clear();
-	for (std::map<std::string, ASpell*>::const_iterator it = src._spell_map.begin(); it !=src._spell_map.end(); ++it)
-		this->_spell_map[it->first] = it->second->clone();
+	spell_map.clear();
+	for (std::map<std::string, ASpell*>::const_iterator it = src.spell_map.begin(); it != src.spell_map.end(); ++it)
+		spell_map[it->first] = it->second->clone();
 	return (*this);
 }
 
 std::string const &	Warlock::getName() const{
-	return (this->_name);
+	return (name);
 }
 
 std::string const &	Warlock::getTitle() const {
-	return (this->_title);
+	return (title);
 }
 
 void	Warlock::setTitle(std::string const & T){
-	this->_title = T;
+	title = T;
 }
 
 void	Warlock::introduce() const{
-	std::cout << this->_name << ": I am " << this->_name << ", " << this->_title << "!\n";
+	std::cout << name << ": I am " << name << ", " << title << "!\n";
 }
 
 void	Warlock::learnSpell(ASpell* as){
-	if (as != NULL && this->_spell_map.find(as->getName()) != this->_spell_map.end() ){//verification de as != NULL SUPER Importante
-		this->_spell_map[as->getName()] = as->clone();
+	if (as == NULL)//verification de as != NULL SUPER Importante
+		return ;
+	if (spell_map.find(as->getName()) == spell_map.end() ){//ici c'est ==
+		spell_map[as->getName()] = as->clone();
 	}
 }
 
 void	Warlock::forgetSpell(std::string sn){
-	if (!sn.empty() && this->_spell_map.find(sn) != this->_spell_map.end()){//penser a verif sn non vide
-		delete this->_spell_map[sn];
-		this->_spell_map.erase(sn);
+	if (!sn.empty() && spell_map.find(sn) != spell_map.end()){//penser a verif sn non vide
+		delete spell_map[sn];
+		spell_map.erase(sn);
 	}
 }
 
 void	Warlock::launchSpell(std::string sn, ATarget const & t){
-	if (!sn.empty() && this->_spell_map.find(sn) != this->_spell_map.end()){//penser a verif sn non vide
-		this->_spell_map[sn]->launch(t);
+	if (sn.empty())//penser a verif sn non vide
+		return ;
+	if (spell_map.find(sn) != spell_map.end()){
+		spell_map[sn]->launch(t);
 	}
 }

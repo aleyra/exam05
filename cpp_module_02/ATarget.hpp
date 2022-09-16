@@ -9,7 +9,7 @@ class ASpell;
 
 class ATarget{
 private:
-	std::string _type;
+	std::string type;
 
 public:
 	ATarget();
