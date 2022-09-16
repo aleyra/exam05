@@ -63,8 +63,9 @@ void	Warlock::launchSpell(std::string sn, ATarget const & t){
 		return ;
 	if (spellbook->spell_map.find(sn) != spellbook->spell_map.end()){//attention ici c'est != 
 		ASpell*	ns = spellbook->createSpell(sn);
-		ns->launch(t);
-		if (ns != NULL)
+		if (ns != NULL){
+			ns->launch(t);
 			delete (ns);
+		}
 	}
 }
